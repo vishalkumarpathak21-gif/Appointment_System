@@ -52,7 +52,7 @@ OPENAI_API_KEY=your_api_key_here
   - Ophthalmology: `dr.arvindnetralaya@docpulse.in`
   - Psychiatry: `dr.vikramprabhu@docpulse.in`
 
-*(For the complete table of all 45 doctors, refer to [CREDENTIALS.md](./CREDENTIALS.md))*
+*(All 45 approved doctors follow the dr.<firstname><lastname>@docpulse.in pattern with password Doctor21)*
 
 ---
 
