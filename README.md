@@ -4,7 +4,6 @@
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 [![Node.js](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-339933?style=flat-square&logo=node.js)](https://nodejs.org/)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB%20Atlas-47A248?style=flat-square&logo=mongodb)](https://www.mongodb.com/atlas)
-[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
 
 **DocPulse India** is a full-stack, enterprise-grade Telehealth and Doctor Appointment Booking Platform tailored for the Indian healthcare ecosystem. It features role-based access for Patients, Doctors, and Super Admins, an intelligent **SmartCare AI Clinical Triage Assistant**, automated Nodemailer email OTP verification, digital E-Prescriptions, grievance redressal, and NMC doctor credential verification.
 
@@ -199,8 +198,3 @@ npm run dev
 | `POST`| `/api/admin/doctor-applications/:id/review`| Approves or rejects doctor credentials |
 | `GET` | `/api/complaints` | Returns patient grievances for review |
 | `POST`| `/api/complaints/:id/resolve` | Admin grievance resolution with notes |
-
----
-
-## 📄 License
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
