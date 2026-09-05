@@ -167,25 +167,6 @@ npm run dev
 
 ---
 
-## 🔑 Login Credentials Cheat Sheet
-
-| Role | Email | Password | Access / Portal |
-| :--- | :--- | :--- | :--- |
-| **Super Admin** | `admin@docpulse.in` | `Doctor21` | Admin Console, Doctor Verifications, Grievances |
-| **Patient** | `vishalkumarpathak21@gmail.com` | `vishal21` | Patient Portal, Bookings, E-Prescriptions |
-| **Doctor (Cardiology)** | `dr.rajeshsharma@docpulse.in` | `Doctor21` | Doctor Consultation Desk, E-Prescribing |
-| **Doctor (Dermatology)** | `dr.ananyamukherjee@docpulse.in` | `Doctor21` | Doctor Consultation Desk, E-Prescribing |
-| **Doctor (General Medicine)**| `dr.sureshvenkatesh@docpulse.in`| `Doctor21` | Doctor Consultation Desk, E-Prescribing |
-| **Doctor (Pediatrics)** | `dr.priyadeshmukh@docpulse.in` | `Doctor21` | Doctor Consultation Desk, E-Prescribing |
-| **Doctor (Orthopedics)** | `dr.arvindswaminathan@docpulse.in` | `Doctor21` | Doctor Consultation Desk, E-Prescribing |
-| **Doctor (Dentistry)** | `dr.sumitkumar@docpulse.in` | `Doctor21` | Doctor Consultation Desk, E-Prescribing |
-| **Doctor (Neurology)** | `dr.kedarnatarajan@docpulse.in` | `Doctor21` | Doctor Consultation Desk, E-Prescribing |
-| **Doctor (Ophthalmology)**| `dr.arvindnetralaya@docpulse.in`| `Doctor21` | Doctor Consultation Desk, E-Prescribing |
-| **Doctor (Psychiatry)** | `dr.vikramprabhu@docpulse.in` | `Doctor21` | Doctor Consultation Desk, E-Prescribing |
-
-> **Note**: All 45 approved doctors follow the pattern `dr.<firstname><lastname>@docpulse.in` with password `Doctor21`.
-
----
 
 ## 🩺 9 Medical Specialties Covered
 
