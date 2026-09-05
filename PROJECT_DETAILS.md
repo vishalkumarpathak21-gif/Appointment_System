@@ -44,52 +44,57 @@
 
 ```
 doctor-appointment/
-├── index.html                   # Main HTML entry
-├── vite.config.js               # Vite frontend configuration
-├── package.json                 # Frontend dependencies (React, Lucide-react, Tailwind)
+├── package.json                 # Root script runner (client, server, dev)
 ├── PROJECT_DETAILS.md           # Detailed platform documentation & credentials
 ├── README.md                    # Quickstart guide
-├── server/
-│   ├── .env                     # Backend environment variables & MongoDB connection
-│   ├── index.js                 # Express server & API endpoints
-│   ├── package.json             # Backend dependencies (Express, Mongoose, Nodemailer, Bcrypt, JWT)
-│   ├── models/
-│   │   ├── User.js              # Patient, Doctor, Admin user schema
-│   │   ├── Doctor.js            # NMC credentials, specialty, slots, approval schema
-│   │   ├── Appointment.js       # Bookings, OTP verification, e-prescriptions
-│   │   ├── Complaint.js         # Grievances & redressal resolution schema
-│   │   └── Otp.js               # Time-limited authentication & booking OTPs
-│   ├── services/
-│   │   ├── aiService.js         # Clinical triage & symptom heuristic engine
-│   │   └── emailService.js      # Nodemailer OTP & confirmation delivery
-│   ├── routes/
-│   │   └── ai.js                # AI guidance and doctor recommendation API
-│   └── scripts/
-│       ├── seedAllDoctors.js    # Database seeder (45 approved doctors)
-│       └── seedPendingAndRejectedDoctors.js # Seeder for 5 pending & 4 rejected doctors
-└── src/
-    ├── App.jsx                  # Root state manager, modal controller, view router
-    ├── index.css                # Tailwind CSS styling & animations
-    ├── main.jsx                 # React DOM mount
+├── client/                      # 💻 All Frontend Code (React 18, Vite, Tailwind CSS)
+│   ├── index.html               # Main HTML entry
+│   ├── vite.config.js           # Vite configuration
+│   ├── package.json             # Frontend dependencies
+│   ├── package-lock.json        # Frontend lockfile
+│   └── src/
+│       ├── App.jsx              # Root state manager, modal controller, view router
+│       ├── index.css            # Tailwind CSS styling & animations
+│       ├── main.jsx             # React DOM mount
+│       ├── services/
+│       │   └── api.js           # Frontend API client service
+│       ├── data/
+│       │   ├── doctorsData.js   # Synced doctors dataset and fallback catalogs
+│       │   └── indianLocations.js # Indian metro locations & cities
+│       └── components/
+│           ├── Navbar.jsx       # Streamlined header & outside-click user dropdown
+│           ├── Hero.jsx         # Search bar, city filter, specialty selector
+│           ├── Specialties.jsx  # 9 Medical departments with hover navigation
+│           ├── AISidePanel.jsx  # Slide-out SmartCare AI Chatbot drawer
+│           ├── HomeAIAssistant.jsx # Homepage embedded AI triage widget
+│           ├── FloatingAIAssistant.jsx # Glowing floating bottom-right AI trigger
+│           ├── PatientPortal.jsx # Patient Dashboard, e-prescriptions, grievances
+│           ├── DoctorPortal.jsx # Doctor Queue, e-prescription generator
+│           ├── AdminPortal.jsx  # Super Admin verification desk & analytics
+│           ├── AuthModal.jsx    # Clean Sign In / Sign Up with OTP verification
+│           ├── BookingModal.jsx # 4-Step appointment booking modal
+│           ├── DoctorDetailsModal.jsx # Doctor profile modal
+│           └── PrescriptionModal.jsx  # Printable E-Prescription viewer
+└── server/                      # ⚙️ All Backend Code (Node.js, Express, MongoDB)
+    ├── .env                     # Backend environment variables & MongoDB connection
+    ├── .env.example             # Safe template for environment variables
+    ├── index.js                 # Express server & API endpoints
+    ├── package.json             # Backend dependencies (Express, Mongoose, Nodemailer, Bcrypt, JWT)
+    ├── package-lock.json        # Backend lockfile
+    ├── models/
+    │   ├── User.js              # Patient, Doctor, Admin user schema
+    │   ├── Doctor.js            # NMC credentials, specialty, slots, approval schema
+    │   ├── Appointment.js       # Bookings, OTP verification, e-prescriptions
+    │   ├── Complaint.js         # Grievances & redressal resolution schema
+    │   └── Otp.js               # Time-limited authentication & booking OTPs
     ├── services/
-    │   └── api.js               # Frontend API client service
-    ├── data/
-    │   ├── doctorsData.js       # Synced doctors dataset and fallback catalogs
-    │   └── indianLocations.js   # Indian metro locations & cities
-    └── components/
-        ├── Navbar.jsx           # Streamlined header & outside-click user dropdown
-        ├── Hero.jsx             # Search bar, city filter, specialty selector
-        ├── Specialties.jsx      # 9 Medical departments with hover navigation
-        ├── AISidePanel.jsx      # Slide-out SmartCare AI Chatbot drawer
-        ├── HomeAIAssistant.jsx  # Homepage embedded AI triage widget
-        ├── FloatingAIAssistant.jsx # Glowing floating bottom-right AI trigger
-        ├── PatientPortal.jsx    # Patient Dashboard, e-prescriptions, grievances
-        ├── DoctorPortal.jsx     # Doctor Queue, e-prescription generator
-        ├── AdminPortal.jsx      # Super Admin verification desk & analytics
-        ├── AuthModal.jsx        # Clean Sign In / Sign Up with OTP verification
-        ├── BookingModal.jsx     # 4-Step appointment booking modal
-        ├── DoctorDetailsModal.jsx # Doctor profile modal
-        └── PrescriptionModal.jsx  # Printable E-Prescription viewer
+    │   ├── aiService.js         # Clinical triage & symptom heuristic engine
+    │   └── emailService.js      # Nodemailer OTP & confirmation delivery
+    ├── routes/
+    │   └── ai.js                # AI guidance and doctor recommendation API
+    └── scripts/
+        ├── seedAllDoctors.js    # Database seeder (45 approved doctors)
+        └── seedPendingAndRejectedDoctors.js # Seeder for 5 pending & 4 rejected doctors
 ```
 
 ---
@@ -115,14 +120,17 @@ cd server
 npm install
 node index.js
 ```
-*Backend runs on `http://localhost:5000` (bound to `0.0.0.0` for dual IPv4/IPv6 compatibility).*
+*Backend runs on `http://localhost:5000`.*
 
 ### 2. Frontend Application
 ```bash
+cd client
 npm install
 npm run dev
 ```
 *Frontend runs on `http://localhost:5173`.*
+
+> **Convenience Root Scripts**: You can also run `npm run client` or `npm run server` directly from the root repository directory!
 
 ---
 

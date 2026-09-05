@@ -44,60 +44,61 @@
 - **NMC Registration Audit**: Tracks National Medical Commission numbers and State Medical Council affiliations.
 - **ABHA ID Support**: Optional Ayushman Bharat Health Account ID field for digital health records.
 - **Nodemailer OTP Authentication**: Secure 6-digit email OTPs for registration, passwordless sign-in, and booking validation.
-- **JWT Authorization**: Token-based authentication securing private portal routes.
-
----
-
-## 📂 Project Architecture
+- **JWT Authorization**: Token-based authentication securing ## 📂 Project Architecture
 
 ```
 doctor-appointment/
-├── index.html                   # Main HTML entry point
-├── vite.config.js               # Vite frontend configuration
-├── package.json                 # Frontend dependencies (React, Lucide-react, Tailwind)
+├── package.json                 # Root script runner (client, server, dev)
 ├── PROJECT_DETAILS.md           # Comprehensive architectural & credential guide
 ├── README.md                    # Project documentation
-├── server/
-│   ├── .env.example             # Safe environment variable template
-│   ├── index.js                 # Express server & REST API routes
-│   ├── package.json             # Backend dependencies (Express, Mongoose, Nodemailer, JWT)
-│   ├── models/
-│   │   ├── User.js              # Patient, Doctor, Admin user schema
-│   │   ├── Doctor.js            # NMC credentials, specialty, slots, approval schema
-│   │   ├── Appointment.js       # Bookings, OTP verification, e-prescriptions
-│   │   ├── Complaint.js         # Grievances & redressal resolution schema
-│   │   └── Otp.js               # Time-limited authentication & booking OTPs
-│   ├── services/
-│   │   ├── aiService.js         # Clinical triage heuristic & symptom engine
-│   │   └── emailService.js      # Nodemailer OTP & confirmation delivery
-│   ├── routes/
-│   │   └── ai.js                # AI guidance and doctor recommendation API
-│   └── scripts/
-│       ├── seedAllDoctors.js    # Database seeder (45 approved doctors)
-│       └── seedPendingAndRejectedDoctors.js # Seeder for 5 pending & 4 rejected doctors
-└── src/
-    ├── App.jsx                  # Root state manager, modal controller, view router
-    ├── index.css                # Tailwind CSS styling & animations
-    ├── main.jsx                 # React DOM mount
+├── client/                      # 💻 Frontend React + Vite Application
+│   ├── index.html               # Main HTML entry point
+│   ├── vite.config.js           # Vite frontend configuration
+│   ├── package.json             # Frontend dependencies (React, Lucide-react, Tailwind)
+│   ├── package-lock.json        # Frontend lockfile
+│   ├── .oxlintrc.json           # Linter rules
+│   └── src/
+│       ├── App.jsx              # Root state manager, modal controller, view router
+│       ├── index.css            # Tailwind CSS styling & animations
+│       ├── main.jsx             # React DOM mount
+│       ├── services/
+│       │   └── api.js           # Frontend API client service
+│       ├── data/
+│       │   ├── doctorsData.js   # Synced doctors dataset (45 doctors across 9 specialties)
+│       │   └── indianLocations.js # Indian metro locations & cities
+│       └── components/
+│           ├── Navbar.jsx       # Streamlined header & outside-click user dropdown
+│           ├── Hero.jsx         # Search bar, city filter, specialty selector
+│           ├── Specialties.jsx  # 9 Medical departments with hover navigation
+│           ├── AISidePanel.jsx  # Slide-out SmartCare AI Chatbot drawer
+│           ├── HomeAIAssistant.jsx # Homepage embedded AI triage widget
+│           ├── FloatingAIAssistant.jsx # Glowing floating bottom-right AI trigger
+│           ├── PatientPortal.jsx # Patient Dashboard, e-prescriptions, grievances
+│           ├── DoctorPortal.jsx # Doctor Queue, e-prescription generator
+│           ├── AdminPortal.jsx  # Super Admin verification desk & analytics
+│           ├── AuthModal.jsx    # Clean Sign In / Sign Up with OTP verification
+│           ├── BookingModal.jsx # 4-Step appointment booking modal
+│           ├── DoctorDetailsModal.jsx # Doctor profile modal
+│           └── PrescriptionModal.jsx # Printable E-Prescription viewer
+└── server/                      # ⚙️ Backend Node.js + Express Server
+    ├── .env.example             # Safe environment variable template
+    ├── index.js                 # Express server & REST API routes
+    ├── package.json             # Backend dependencies (Express, Mongoose, Nodemailer, JWT)
+    ├── package-lock.json        # Backend lockfile
+    ├── models/
+    │   ├── User.js              # Patient, Doctor, Admin user schema
+    │   ├── Doctor.js            # NMC credentials, specialty, slots, approval schema
+    │   ├── Appointment.js       # Bookings, OTP verification, e-prescriptions
+    │   ├── Complaint.js         # Grievances & redressal resolution schema
+    │   └── Otp.js               # Time-limited authentication & booking OTPs
     ├── services/
-    │   └── api.js               # Frontend API client service
-    ├── data/
-    │   ├── doctorsData.js       # Synced doctors dataset (45 doctors across 9 specialties)
-    │   └── indianLocations.js   # Indian metro locations & cities
-    └── components/
-        ├── Navbar.jsx           # Streamlined header & outside-click user dropdown
-        ├── Hero.jsx             # Search bar, city filter, specialty selector
-        ├── Specialties.jsx      # 9 Medical departments with hover navigation
-        ├── AISidePanel.jsx      # Slide-out SmartCare AI Chatbot drawer
-        ├── HomeAIAssistant.jsx  # Homepage embedded AI triage widget
-        ├── FloatingAIAssistant.jsx # Glowing floating bottom-right AI trigger
-        ├── PatientPortal.jsx    # Patient Dashboard, e-prescriptions, grievances
-        ├── DoctorPortal.jsx     # Doctor Queue, e-prescription generator
-        ├── AdminPortal.jsx      # Super Admin verification desk & analytics
-        ├── AuthModal.jsx        # Clean Sign In / Sign Up with OTP verification
-        ├── BookingModal.jsx     # 4-Step appointment booking modal
-        ├── DoctorDetailsModal.jsx # Doctor profile modal
-        └── PrescriptionModal.jsx  # Printable E-Prescription viewer
+    │   ├── aiService.js         # Clinical triage heuristic & symptom engine
+    │   └── emailService.js      # Nodemailer OTP & confirmation delivery
+    ├── routes/
+    │   └── ai.js                # AI guidance and doctor recommendation API
+    └── scripts/
+        ├── seedAllDoctors.js    # Database seeder (45 approved doctors)
+        └── seedPendingAndRejectedDoctors.js # Seeder for 5 pending & 4 rejected doctors
 ```
 
 ---
@@ -109,7 +110,7 @@ doctor-appointment/
    cp server/.env.example server/.env
    ```
 
-2. Configure your environment variables:
+2. Configure your environment variables in `server/.env`:
    ```env
    # MongoDB Atlas Connection URI
    MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/docpulse_db?retryWrites=true&w=majority
@@ -154,10 +155,13 @@ node index.js
 ### 3. Frontend Setup
 Open a new terminal window:
 ```bash
+cd client
 npm install
 npm run dev
 ```
 *Frontend will run on `http://localhost:5173`.*
+
+> **Tip**: You can also run `npm run client` and `npm run server` directly from the root repository directory!
 
 ---
 

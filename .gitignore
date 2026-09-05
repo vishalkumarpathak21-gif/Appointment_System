@@ -1,14 +1,19 @@
 # Dependencies
-node_modules
-server/node_modules
-dist
-dist-ssr
+node_modules/
+client/node_modules/
+server/node_modules/
+dist/
+client/dist/
+dist-ssr/
 *.local
 
 # Environment variables & secrets (CRITICAL: Do not commit)
 .env
 .env.*
 !.env.example
+client/.env
+client/.env.*
+!client/.env.example
 server/.env
 server/.env.*
 !server/.env.example
