@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: docpulse-backend
+    env: node
+    plan: free
+    region: singapore
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        value: mongodb+srv://Doctor21:Doctor21@cluster0.vstflgy.mongodb.net/docpulse_db?retryWrites=true&w=majority&appName=Cluster0
+      - key: JWT_SECRET
+        value: docpulse_secure_jwt_secret_key_2026_india
+      - key: EMAIL_USER
+        value: vishalkumarpathak21@gmail.com
+      - key: EMAIL_PASS
+        value: nnur uqxh qyqw ewrb
