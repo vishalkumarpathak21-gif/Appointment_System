@@ -43,13 +43,15 @@
 ### 3. 🔐 Security & Indian Healthcare Compliance
 - **NMC Registration Audit**: Tracks National Medical Commission numbers and State Medical Council affiliations.
 - **ABHA ID Support**: Optional Ayushman Bharat Health Account ID field for digital health records.
-- **Nodemailer OTP Authentication**: Secure 6-digit email OTPs for registration, passwordless sign-in, and booking validation.
-- **JWT Authorization**: Token-based authentication securing ## 📂 Project Architecture
+- **JWT Authorization**: Token-based authentication securing private portal routes.
+
+---
+
+## 📂 Project Architecture
 
 ```
 doctor-appointment/
 ├── package.json                 # Root script runner (client, server, dev)
-├── PROJECT_DETAILS.md           # Comprehensive architectural & credential guide
 ├── README.md                    # Project documentation
 ├── client/                      # 💻 Frontend React + Vite Application
 │   ├── index.html               # Main HTML entry point
